@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>
+    {% block title %} {% endblock title %}
+  </title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/blog-post.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{url_for("show_main_page")}}">Elvin Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for("show_main_page")}}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for("show_about_page")}}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for("show_contact_page")}}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <br>
+        <br>
+        <p class="lead">
+
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            <h5 class="card-header">Title:</h5>
+            <form action="{{ url_for("edit_page") }}" method="post">
+              <div class="form-group">
+                <textarea class="form-control" rows="1" name="title"></textarea>
+              </div>
+              <h5 class="card-header">Author:</h5>
+              <div class="form-group">
+                <textarea class="form-control" rows="1" name="author"></textarea>
+              </div>
+
+              <h5 class="card-header">Content:</h5>
+              <div class="card-body">
+                <div class="form-group">
+                  <textarea class="form-control" rows="10" name="content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </p>
+      </div>
+    </div>
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+    </div>
+  </div>
+
+  <!-- /.container -->
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Elvin Website 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

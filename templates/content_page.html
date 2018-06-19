@@ -1,0 +1,13 @@
+<!DOCTYPE html> {% extends "category-page.html" %} {% block title %}
+<h1 class="mb-4">
+    <strong>{{ row.title }}
+    </strong>
+</h1>
+<p>
+    <strong>By {{ row.author }}</strong>
+</p>
+<p class="mb-4">
+    <strong>{{ row.time }}</strong>
+</p>
+{% endblock title %} {% block info %} {% endblock info %} {% block body %} {{ row.content|toMarkdown }} {% endblock body
+%}

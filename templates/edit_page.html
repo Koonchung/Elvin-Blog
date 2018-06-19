@@ -1,0 +1,26 @@
+<!DOCTYPE html> {% extends "post-page.html" %} {% block title %} Elvin Blog {% endblock title %} {% block body %}
+<!-- Default form reply -->
+<form action="{{ url_for('edit_page',article_id=row.id) }}" method="post">
+    <!-- Name -->
+    <label>Title</label>
+    <input type="title" class="form-control" name="title" value="{{ row.title }}">
+    <br>
+
+    <!-- Author -->
+    <label>Author</label>
+    <input type="author" class="form-control" name="author" value="{{ row.author }}">
+    <br>
+
+    <!-- Content -->
+    <div class="form-group">
+        <label>Content</label>
+        <textarea class="form-control" rows="20" name="content">{{ row.content }}</textarea>
+    </div>
+
+    <div class="text-center mt-4">
+        <button type="submit" value="submit">Post</button>
+    </div>
+</form>
+<!-- Default form reply -->
+
+{% endblock body %}

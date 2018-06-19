@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Elvin Blog - Admin</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
+                    <strong class="blue-text">Elvin Blog Admin</strong>
+                </a>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="{{ url_for('show_main_page') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="{{ url_for('show_admin_page') }}">Manage</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="{{ url_for('show_about_page') }}">About</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="{{ url_for('show_logout_page') }}" class="nav-link border border-light rounded waves-effect">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="mt-5 pt-5">
+        <div class="container">
+
+            <!--Section: Jumbotron-->
+            <section class="card wow fadeIn" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+
+                <!-- Content -->
+                <div class="card-body text-white text-center py-5 px-5 my-5">
+
+                    <h1 class="mb-4">
+                        <strong>Welcome back, Elvin</strong>
+                    </h1>
+                    <a href="{{ url_for('writing_page') }}" class="btn btn-outline-white btn-lg">Write an article
+                    </a>
+                    <a href="{{ url_for('manage_page') }}" class="btn btn-outline-white btn-lg">Manage articles
+                    </a>
+
+
+                </div>
+                <!-- Content -->
+            </section>
+            <!--Section: Jumbotron-->
+            <hr class="my-5">
+
+            <!--Section: Cards-->
+            <section class="text-center">
+
+                <!--Grid row-->
+                <div class="row mb-4 wow fadeIn">
+                    {% for row in rows[::-1] %}
+                    <!-- 倒序显示 -->
+                    <!--Grid column-->
+                    <div class="col-lg-12 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">
+                                    {{ row.title }}
+                                </h4>
+                                <!--Text-->
+                                <p class="card-text">
+                                    <strong>
+                                        Date: {{ row.time }}
+                                    </strong>
+                                </p>
+                                <a href="{{ url_for('show_content_page',article_id=row.id) }}" class="btn btn-primary btn-md">Preview</a>
+                                <a href="{{ url_for('edit_page',article_id=row.id) }}" class="btn btn-primary btn-md">Edit</a>
+                                <a href="{{ url_for('delete_page',article_id=row.id) }}" class="btn btn-primary btn-md">Delete</a>
+                            </div>
+                        </div>
+                        <!--/.Card-->
+                    </div>
+                    <!--Grid column-->{% endfor %} </div>
+                <!--Grid row-->
+
+
+
+            </section>
+            <!--Section: Cards-->
+
+        </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+
+        <hr class="my-4">
+
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2018 Copyright:
+            <a href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank"> Elvin Blog </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/static/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/static/js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+</body>
+
+</html>
