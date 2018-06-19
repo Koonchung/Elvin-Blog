@@ -5,12 +5,16 @@ from flask import Flask, render_template, g, flash, request, session, redirect, 
 from flask_bootstrap import Bootstrap
 from models import db, Article, User
 import markdown
+import hashlib
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 db.create_all()
 app.secret_key = "your_secret_key"  # 随便输入字符串
 
+
+def toMD5(password):
+    return hashlib.md5(password.encode(encoding='utf-8')).hexdigest()
 
 @app.template_filter('toMarkdown')
 def toMarkdown(content):
@@ -29,7 +33,7 @@ def show_login_page():
         return render_template('login_page.html')
     elif request.method == 'POST':
         username = request.form['username']
-        password = request.form['password']
+        password = toMD5(request.form['password'])
         if not User.query.filter_by(username=username).all():
             flash("用户名不存在")
         elif password not in User.query.filter_by(username=username).first().password:
